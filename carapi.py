@@ -11,14 +11,13 @@ def findcar(car_name):
 
     if response.status_code == 200:
         data = response.json()
-        print(data)
         records = data['records']
-        table = PrettyTable(['Make', 'Model', 'Year', 'Drive', 'Engine displacement', 'Engine Description', 'Fuel Type 1'])
+        table = PrettyTable(['Make', 'Model', 'Year', 'Drive', 'Cylinders', 'Engine displacement', 'Transmission', 'Fuel Type 1'])
         if len(records) > 0:
             for record in records:
                 fields = record['fields']
                 table.add_row(
-                    [fields['make'], fields['model'], fields['year'], fields['drive'], str(fields['displ']) + ' L', fields['trany'], fields['fueltype1']])
+                    [fields['make'], fields['model'], fields['year'], fields['drive'], fields['cylinders'], str(fields['displ']) + ' L', fields['trany'], fields['fueltype1']])
             print(table)
 
             # add more fields as needed
