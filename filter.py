@@ -3,5 +3,3 @@ def filterClass(line):
     for word in remove_list:
         line = line.replace(word, '')
     return line
-s = 'C\\Users\\ferrari.jpeg'
-print(s.replace('.', '_cropped.').split('\\')[-1])

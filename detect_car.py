@@ -144,9 +144,11 @@ def detect_car():
                     if save_img or view_img:  # Add bbox to image
                         label = f'{names[int(cls)]} {conf:.2f}'
                         plot_one_box(xyxy, im0, label=label, color=colors[int(cls)], line_thickness=1)
-            input = source.replace('.', '_cropped.').split('/')[-1]
-            print(input)
-            detect_make(input, opt)
+            if source.__contains__('/'):
+                inputt = source.replace('.', '_cropped.').split('/')[-1]
+            elif source.__contains__('\\'):
+                inputt = source.replace('.', '_cropped.').split('\\')[-1]
+            detect_make(inputt, opt)
             # Print time (inference + NMS)
 
             # Stream results
